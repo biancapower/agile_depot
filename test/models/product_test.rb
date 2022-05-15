@@ -18,12 +18,12 @@ class ProductTest < ActiveSupport::TestCase
     
     product.price = -1
     assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
+    assert_equal ["can't be -1"],
       product.errors[:price]
 
     product.price = 0
     assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
+    assert_equal ["can't be 0"], # FIXME: should be able to use something like `I18n.translate('errors.messages.taken')`
       product.errors[:price]
     
     product.price = 1
