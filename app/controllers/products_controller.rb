@@ -28,6 +28,9 @@ class ProductsController < ApplicationController
         format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
+        # output full error message to console
+        # this is displayed in test output also
+        # puts @product.errors.full_messages
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -41,6 +44,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
+        # puts @product.errors.full_messages
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
