@@ -8,4 +8,12 @@ class Product < ApplicationRecord
 		with: %r{\.(gif|jpg|png)\z}i,
 		message: 'must be a URL for GIF, JPG or PNG image.'
 	}
+
+	def next
+    Product.where("id > :id", id: id).first
+	end
+
+	def prev
+		Product.where("id < :id", id: id).last
+	end
 end

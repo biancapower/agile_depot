@@ -11,5 +11,9 @@
       <%= button_to 'Destroy this product', product_path(@product), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
     <%= link_to 'Back to products', products_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    
+    <%= link_to_unless_current "Prev Product", @product.prev %>
+    <%= link_to_unless_current "Next Product", @product.next %>
+    <% console %>
   </div>
 </div>
